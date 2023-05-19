@@ -5,6 +5,8 @@ redis = Redis.new(host: "localhost")
 redis.set("a", 1)
 redis.set("ab", 2)
 redis.set("abc", 3)
+redis.get("abc")
+#3
 
 # ZSet type
 redis.zadd("popular_fruit", 10, "apple")
