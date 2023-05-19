@@ -26,27 +26,26 @@ There's one valid pair 1+5, and three different valid pairs 3+3 (the 3rd and 4th
 =end
 
 def number_of_ways(arr, k)
-  ways = 0
-  for i in 0...N
-    if arr[i] <= k
-      for j in i+1...N
-        if arr[i] + arr[j] > k
-          break
-        elsif  arr[i] + arr[j] == k then
-          ways += 1
-        end
-      end
-    end
+  freq_map = Hash.new(0)
+  count = 0
+
+  # Count the frequencies of each element in the list
+  arr.each { |num| freq_map[num] += 1 }
+
+  # Calculate the number of pairs
+  arr.each do |num|
+    complement = k - num
+    count += freq_map[complement] if freq_map.key?(complement)
+
+    # Exclude the case where num + num = k to avoid counting duplicates
+    count -= 1 if complement == num
   end
-  ways
+
+  # Divide by 2 since each pair is counted twice (once for each element)
+  count / 2
 end
 
-N = 20      #must be greater than 1
-max_v = 1000   #must be greater than 1
-k = 10        #must be <= 2 * max_v
-#array = Array.new(N) { Random.rand(1...max_v + 1)}
-array = [1, 11, 6, 3, 5, 19, 8, 7, 2, 5, 4, 10, 9, 1, 20, 19, 17, 3, 21, 7]
-puts array
-# puts array.tally
-puts "Number of ways #{number_of_ways(array.sort, k)}"
-# Call number_of_ways() with test cases here
+arr = [1, 11, 6, 3, 5, 19, 8, 7, 2, 5, 4, 10, 9, 1, 20, 19, 17, 3, 21, 7]
+k = 10
+ways = number_of_ways(arr, k)
+puts "Number of ways: #{ways}"

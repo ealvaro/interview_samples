@@ -25,21 +25,21 @@ def rotational_cipher(input, rotation_factor)
   input.each_byte do |c|
     asc = c.ord
     case asc
-      when 'A'.ord..'Z'.ord
-        new = c.ord + rf
-        if new > 'Z'.ord
-          new = 'A'.ord + (new - 'Z'.ord) - 1
-        end
-      when 'a'.ord..'z'.ord
-        new = c.ord + rf
-        if new > 'z'.ord
-          new = 'a'.ord + (new - 'z'.ord) - 1
-        end
-      when '0'.ord..'9'.ord
-        new = c.ord + rf_n
-        if new > '9'.ord
-          new = '0'.ord + (new - '9'.ord) - 1
-        end
+    when 'A'.ord..'Z'.ord
+      new = c.ord + rf
+      if new > 'Z'.ord
+        new = 'A'.ord + (new - 'Z'.ord) - 1
+      end
+    when 'a'.ord..'z'.ord
+      new = c.ord + rf
+      if new > 'z'.ord
+        new = 'a'.ord + (new - 'z'.ord) - 1
+      end
+    when '0'.ord..'9'.ord
+      new = c.ord + rf_n
+      if new > '9'.ord
+        new = '0'.ord + (new - '9'.ord) - 1
+      end
     else
       new = asc
     end
@@ -53,11 +53,10 @@ N = 1000
 puts "#{'A'.ord},#{'Z'.ord},#{'a'.ord},#{'z'.ord},#{'0'.ord},#{'9'.ord}"
 puts "**************"
 #input = "^&%$%*()"
-#input = (0...N).map { ('0'..'z').to_a[rand(74)]}.join
-#puts input
 input = "abcdefghijklmNOPQRSTUVWXYZ0123456789"
+puts input
 #input = "Zebra-493?"
-r_f = 0
+r_f = 7
 puts "**************"
 puts rotational_cipher(input, r_f)
 
