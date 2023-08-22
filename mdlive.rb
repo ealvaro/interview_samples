@@ -7,11 +7,11 @@ def prime?(num)
       end
     end
   end
-  puts "#{num} is prime?"
+  puts "#{num} is prime!"
   return true && num > 0
 end
 
-100.times do |p|
+1000.times do |p|
   puts prime? p
 end
 

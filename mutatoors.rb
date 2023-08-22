@@ -10,6 +10,13 @@ puts str.downcase!
 puts str
 puts str2
 
+str = "ACME PRODUCTS"
+puts str
+str2 = str
+puts str.downcase
+puts str
+puts str2
+
 num1 = 5
 num2 = num1
 puts num1.next
